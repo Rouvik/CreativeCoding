@@ -1,0 +1,70 @@
+body {
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+
+    transition: 200ms;
+}
+
+h1 {
+    font-family: 'Toshiba Sat 8x14';
+    letter-spacing: 10px;
+}
+
+h1::before {
+    content: '# ';
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.container .card {
+    width: calc(95vw / 3);
+    border: 1px solid var(--mcontrast);
+    border-radius: 5px;
+    background-color: var(--mcolor);
+    color: var(--mcolor);
+    color: green;
+
+    font-family: 'Noto Sans Mono';
+}
+
+.container .card h3 {
+    border-bottom: 2px solid var(--mcontrast);
+    margin: 0px 10px 0px 10px;
+}
+
+.container .card h3::before {
+    content: '🕹️';
+}
+
+.container .card p {
+    padding: 0.8em;
+}
+
+.container > .card .img-container {
+    width: calc(95vw / 3);
+    height: 20vh;
+
+    border-radius: 4px 4px 0px 0px;
+
+    overflow: hidden;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container .card {
+        width: 90vw;
+    }
+
+    .container .card .img-container {
+        width: 90vw;
+    }
+}
