@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <!-- Theme -->
+    <link rel="stylesheet" href="./theme.css">
+
+    <!-- Fonts -->
+     <link rel="stylesheet" href="./material-symbols-rounded/material-symbols-rounded.css">
+    <link rel="stylesheet" href="./Noto Mono/NotoMono.css">
+    <link rel="stylesheet" href="./Toshiba_Sat_8x14/toshiba.css">
+
+    <!-- Page Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div class="mode">
+        <label for="pl2"><input type="radio" name="mode-select" id="pl2" onclick="updateMode(this)">2 Player</label>
+        <label for="cpe"><input type="radio" name="mode-select" id="cpe" onclick="updateMode(this)">CPU Easy</label>
+        <label for="cpi"><input type="radio" name="mode-select" id="cpi" onclick="updateMode(this)" checked>CPU Impossible</label>
+    </div>
+    <br><br>
+    <div class="container">
+        <table id="board">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="message">
+        <h2 id="msg"></h2>
+        <button class="reset-button" onclick="restart()">Restart</button>
+    </div>
+</body>
+<script src="index.js"></script>
+<script src="./theme.js"></script>
+</html>

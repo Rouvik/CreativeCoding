@@ -1,0 +1,70 @@
+body {
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+    transition: 200ms;
+}
+
+.mode {
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+    border-radius: 2px;
+
+    font-family: 'Noto Sans Mono';
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+}
+
+.mode > label {
+    margin: 0px 20px 0px 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.message {
+    font-family: 'Noto Sans Mono';
+    color: var(--mcontrast);
+}
+
+table {
+    border-collapse: collapse;
+    font-family: 'Toshiba Sat 8x14';
+}
+
+td {
+    width: calc(min(100vw, 60vh) / 3);
+    height: calc(min(100vw, 60vh) / 3);
+    
+    font-size: 2rem;
+    text-align: center;
+
+    border: 2px solid var(--mcontrast);
+}
+
+h1 {
+    border-bottom: 2px solid var(--mcontrast);
+    margin-left: 5px;
+    font-family: 'Noto Sans Mono';
+}
+
+h1::before {
+    content: '🎮';
+}
+
+.reset-button {
+    font-family: 'Noto Sans Mono';
+    /* font-size: 1.5rem; */
+    padding: 10px;
+    /* margin: 10px; */
+    border: none;
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+    cursor: pointer;
+    transition: 200ms;
+}

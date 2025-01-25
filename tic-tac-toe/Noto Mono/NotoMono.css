@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Noto Sans Mono';
+    src: url('NotoSansMono-Regular.eot');
+    src: url('NotoSansMono-Regular.eot?#iefix') format('embedded-opentype'),
+        url('NotoSansMono-Regular.woff2') format('woff2'),
+        url('NotoSansMono-Regular.woff') format('woff'),
+        url('NotoSansMono-Regular.ttf') format('truetype'),
+        url('NotoSansMono-Regular.svg#NotoSansMono-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

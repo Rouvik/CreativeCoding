@@ -1,0 +1,30 @@
+:root {
+  --mcolor: white;
+  --mcolorrgb: rgba(0, 0, 0, 0.2);
+  --mcontrast: black;
+}
+
+.viewMode {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  width: 60px;
+  height: 60px;
+  line-height: 30px;
+  padding: 15px;
+  border-radius: 100%;
+  border: 0px;
+  z-index: 999;
+
+  background-color: var(--mcontrast);
+  color: var(--mcolor);
+  font-family: 'Material Symbols Rounded';
+  font-weight: 400;
+  font-size: 30px;
+
+  transition: 200ms;
+}
+
+.theme-font-contrast {
+  color: var(--mcontrast);
+}

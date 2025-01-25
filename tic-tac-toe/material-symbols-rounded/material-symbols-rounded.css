@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Material Symbols Rounded';
+    src: url('MaterialSymbolsRounded48pt-Regular.eot');
+    src: url('MaterialSymbolsRounded48pt-Regular.eot?#iefix') format('embedded-opentype'),
+        url('MaterialSymbolsRounded48pt-Regular.woff2') format('woff2'),
+        url('MaterialSymbolsRounded48pt-Regular.woff') format('woff'),
+        url('MaterialSymbolsRounded48pt-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
