@@ -87,6 +87,17 @@ label:hover {
     box-shadow: 2px 2px 5px var(--mcontrast);
 }
 
+/* Fix file input style issue */
+.fileInpLabel {
+    border: 0px;
+}
+
+.fileInpWrapper {
+    border: 1px solid var(--mcontrast);
+    border-radius: 5px;
+    padding: 4px;
+}
+
 /* Input hint */
 .hint {
     opacity: 0.5;

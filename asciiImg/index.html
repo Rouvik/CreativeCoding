@@ -33,7 +33,9 @@
         <label for="inpType2">Video Source: <input type="radio" name="inpType" id="inpType2"
                 onclick="changedInputMode()"></label>
     </p>
-    <label for="fileInp">Image Resource: <input type="file" id="fileInp" oninput="fileInput()"></label>
+    <div class="fileInpWrapper">
+        <label for="fileInp" class="fileInpLabel">Image Resource: <input type="file" id="fileInp" oninput="fileInput()"></label>
+    </div>
     <p>Optional dimentions: <br>
         <input type="number" id="dimx" placeholder="Width" value="400"> x
         <input type="number" id="dimy" placeholder="Height" value="200"> <br>
@@ -60,7 +62,8 @@
     <div class="preWrapper">
         <pre id="asciiOutput" placeholder="asciiOutput" readonly></pre>
     </div>
-    <footer>Created by <a href="mailto:majirouvik@gmail.com">Rouvik Maji</a> Github <a href="https://github.com/Rouvik/CreativeCoding/tree/main">repo</a></footer>
+    <footer>Created by <a href="mailto:majirouvik@gmail.com">Rouvik Maji</a> Github <a
+            href="https://github.com/Rouvik/CreativeCoding/tree/main">repo</a></footer>
 </body>
 <script src="./index.js"></script>
 <script src="../common/theme.js"></script>
