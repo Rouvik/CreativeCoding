@@ -1,0 +1,131 @@
+body {
+    font-family: 'Noto Sans Mono';
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+
+    transition: 500ms;
+}
+
+/* Pre */
+pre {
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    width: min-content;
+}
+
+.preWrapper {
+    overflow-x: auto;
+    margin-bottom: 2em;
+}
+
+/* Canvas */
+canvas {
+    border: 1px solid var(--mcontrast);
+}
+
+/* Generate button */
+#genBtn {
+    background: var(--mcontrast);
+    color: var(--mcolor);
+    border: 0px;
+    border-radius: 2px;
+    font-family: 'Noto Sans Mono';
+    transition: 200ms;
+}
+
+#genBtn:hover {
+    transform: scale(1.1, 1.1) translateX(5px);
+}
+
+/* Inputs */
+input {
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+    font-family: 'Noto Sans Mono';
+    border: 2px solid var(--mcontrast);
+    border-radius: 5px;
+}
+
+input[type=file] {
+    border: 0px;
+    border-radius: 2px;
+    font-family: 'Noto Sans Mono';
+    color: var(--mcontrast);
+}
+
+input[type=file]::file-selector-button {
+    background-color: var(--mcontrast);
+    border: 0px;
+    font-family: 'Noto Sans Mono';
+    color: var(--mcolor);
+}
+
+input[type=color] {
+    opacity: 0;
+}
+
+/* Primary Heading */
+h1 {
+    border-bottom: 2px solid var(--mcontrast);
+    letter-spacing: 2px;
+}
+
+h1::before {
+    content: '# ';
+}
+
+/* Labels */
+label {
+    border: 1px solid var(--mcontrast);
+    border-radius: 5px;
+    padding: 4px;
+
+    transition: 200ms;
+}
+
+label:hover {
+    box-shadow: 2px 2px 5px var(--mcontrast);
+}
+
+/* Input hint */
+.hint {
+    opacity: 0.5;
+    font-size: 0.8em;
+    font-style: italic;
+    margin: 0px;
+    padding: 0px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 1.5em;
+    font-size: 1em;
+    line-height: 1.5em;
+    text-align: center;
+
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+}
+
+a {
+    color: rgb(255, 20, 83);
+    text-decoration: none;
+
+    transition: 200ms;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a::before {
+    content: '🔗';
+}
+
+/* reposition the theme button */
+.viewMode {
+    bottom: 1em;
+}

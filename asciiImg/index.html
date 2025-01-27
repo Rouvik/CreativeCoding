@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ascii Image Generator</title>
+    <!-- Font -->
+    <link rel="stylesheet" href="../common/Fonts/Noto Mono/NotoMono.css">
+    <link rel="stylesheet" href="../common/Fonts/material-symbols-rounded/material-symbols-rounded.css">
+
+    <!-- Theme -->
+    <link rel="stylesheet" href="../common/theme.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>ASCII Image Generator</h1>
+    <video style="display: none;" id="vdo"></video>
+    <p>Canvas:</p>
+    <canvas id="screen">Oops! Canvas is not available in your browser</canvas>
+    <p>
+        <label for="asciiType1">B/W: <input type="radio" name="asciiType" id="asciiType1" checked
+                onclick="changedAsciiMode()"></label>
+        <label for="asciiType2">Coloured: <input type="radio" name="asciiType" id="asciiType2"
+                onclick="changedAsciiMode()"></label>
+    </p>
+    <p>
+        <label for="inpType1">Image: <input type="radio" name="inpType" id="inpType1" checked
+                onclick="changedInputMode()"></label>
+        <label for="inpType2">Video Source: <input type="radio" name="inpType" id="inpType2"
+                onclick="changedInputMode()"></label>
+    </p>
+    <label for="fileInp">Image Resource: <input type="file" id="fileInp" oninput="fileInput()"></label>
+    <p>Optional dimentions: <br>
+        <input type="number" id="dimx" placeholder="Width" value="400"> x
+        <input type="number" id="dimy" placeholder="Height" value="200"> <br>
+    </p>
+    <p class="hint">
+        (actually it's always a good idea to provide dimentions if you dont want the page to crash)
+    </p>
+    <p>
+        <label for="colorPicker" id="colorPickerWrapper">Select ASCII background: <input type="color" id="colorPicker"
+                oninput="changedColor(this)" value="#FFFFFF"></label>
+    </p>
+    <p class="hint">
+        (if your coloured image doesn't look good try changing to black background)</p>
+    <p>
+        <label for="asciiMap">ASCII Map: <input type="text" id="asciiMap" value="@#S%?*+;:,."
+                oninput="changedAsciiMap(this)"></label><br>
+    </p>
+    <p class="hint">(use a single █ for crisp block ascii images)</p>
+    <p>
+        <button onclick="fileInput()" id="genBtn">Generate Again</button>
+    </p>
+
+    <h2>Output:</h2>
+    <div class="preWrapper">
+        <pre id="asciiOutput" placeholder="asciiOutput" readonly></pre>
+    </div>
+    <footer>Created by <a href="mailto:majirouvik@gmail.com">Rouvik Maji</a> Github <a href="https://github.com/Rouvik/CreativeCoding/tree/main">repo</a></footer>
+</body>
+<script src="./index.js"></script>
+<script src="../common/theme.js"></script>
+
+</html>

@@ -62,6 +62,7 @@ h1::before {
 
     .container .card {
         width: 90vw;
+        margin-bottom: 15px;
     }
 
     .container .card .img-container {
