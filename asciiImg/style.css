@@ -21,6 +21,7 @@ pre {
 /* Canvas */
 canvas {
     border: 1px solid var(--mcontrast);
+    max-width: 100%;
 }
 
 /* Generate button */

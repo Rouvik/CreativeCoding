@@ -14,7 +14,7 @@ const colorPickerWrapper = document.getElementById('colorPickerWrapper');
 const asciiOutput = document.getElementById('asciiOutput');
 
 // global variables
-let asciiChars = ['@', '#', 'S', '%', '?', '*', '+', ';', ':', ',', '.'];
+let asciiChars = ['Ñ', '@', '#', 'W', '$', '9', '8', '7', '6', '5', '3', '2', '1', '0', '?', '!', 'a', 'b', 'c', ';', ':', '+', '=', '-', ',', '.', '_'];
 let asciiImg = asciiImgBW;
 let processVideo = () => { };
 let intId = null;

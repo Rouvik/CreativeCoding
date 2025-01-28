@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Process</title>
+    <!-- Font -->
+    <link rel="stylesheet" href="../common/Fonts/Noto Mono/NotoMono.css">
+    <link rel="stylesheet" href="../common/Fonts/material-symbols-rounded/material-symbols-rounded.css">
+
+    <!-- Theme -->
+    <link rel="stylesheet" href="../common/theme.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <h1>Image Processor:</h1>
+    <img src="" alt="Select an image" id="img" onclick="fileInp.click()">
+    <input type="file" id="fileInp" accept="image/*" oninput="processFile()">
+    <h2>Mode:</h2>
+    <p>
+        <label for="RGB">RGB: <input type="radio" name="mode" id="RGB" checked oninput="changedMode()"></label>
+        <label for="grayscale">Grayscale: <input type="radio" name="mode" id="grayscale"
+                oninput="changedMode()"></label>
+    </p>
+    <h2>Kernel:</h2>
+    <select id="kernel_types" oninput="changedKernel(this)">
+        <option>Gaussian Blur</option>
+        <option>Box Blur</option>
+        <option>Edge detection (soft)</option>
+        <option>Edge detection (hard)</option>
+        <option>Sharpen</option>
+        <option>Emboss</option>
+        <option>Left sobel</option>
+        <option>Right sobel</option>
+        <option>Top sobel</option>
+        <option>Bottom sobel</option>
+        <option>Identity</option>
+    </select><br><br>
+    <table class="kernel" id="kernel">
+        <tbody>
+            <tr>
+                <td><input type="number" id="k_00" value="0.0625"></td>
+                <td><input type="number" id="k_01" value="0.125"></td>
+                <td><input type="number" id="k_02" value="0.0625"></td>
+            </tr>
+            <tr>
+                <td><input type="number" id="k_10" value="0.125"></td>
+                <td><input type="number" id="k_11" value="0.25"></td>
+                <td><input type="number" id="k_12" value="0.125"></td>
+            </tr>
+            <tr>
+                <td><input type="number" id="k_20" value="0.0625"></td>
+                <td><input type="number" id="k_21" value="0.125"></td>
+                <td><input type="number" id="k_22" value="0.0625"></td>
+            </tr>
+        </tbody>
+    </table>
+    <p>
+        <button onclick="imageHandler()" class="btn">Regenerate</button>
+        <button onclick="setAsSource()" class="btn">Set this image as source</button>
+        <button onclick="rerunWithSetAsSource()" class="btn">Set this image as source and regenerate</button>
+    </p>
+    <h2>Output:</h2>
+    <canvas id="screen">Oops! Canvas is not available in your browser</canvas>
+    <p class="downloadWrapper">
+        <a href="void:" id="dwnld" class="dwnld" download="image.png" onclick="downloadImage(this)">Download output</a>
+    </p>
+    <footer>Created by <a href="mailto:majirouvik@gmail.com">Rouvik Maji</a> Github <a
+            href="https://github.com/Rouvik/CreativeCoding/tree/main">repo</a></footer>
+</body>
+<script src="./index.js"></script>
+<script src="../common/theme.js"></script>
+
+</html>

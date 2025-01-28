@@ -34,7 +34,7 @@
                 onclick="changedInputMode()"></label>
     </p>
     <div class="fileInpWrapper">
-        <label for="fileInp" class="fileInpLabel">Image Resource: <input type="file" id="fileInp" oninput="fileInput()"></label>
+        <label for="fileInp" class="fileInpLabel">Image Resource: <input type="file" id="fileInp" accept="image/*" oninput="fileInput()"></label>
     </div>
     <p>Optional dimentions: <br>
         <input type="number" id="dimx" placeholder="Width" value="400"> x
@@ -50,7 +50,7 @@
     <p class="hint">
         (if your coloured image doesn't look good try changing to black background)</p>
     <p>
-        <label for="asciiMap">ASCII Map: <input type="text" id="asciiMap" value="@#S%?*+;:,."
+        <label for="asciiMap">ASCII Map: <input type="text" id="asciiMap" value="Ñ@#W$987653210?!abc;:+=-,._"
                 oninput="changedAsciiMap(this)"></label><br>
     </p>
     <p class="hint">(use a single █ for crisp block ascii images)</p>

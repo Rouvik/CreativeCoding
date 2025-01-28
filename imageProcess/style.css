@@ -1,0 +1,159 @@
+body {
+    font-family: 'Noto Sans Mono';
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+
+    transition: 500ms;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 450px;
+
+    border: 2px solid var(--mcontrast);
+}
+
+img {
+    max-width: 100%;
+    max-height: 450px;
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+img:hover {
+    transform: scale(1.05) translateX(10px);
+}
+
+img[alt]::after {
+    display: block;
+    position: relative;
+    top: -1.4em;
+    left: 0;
+    height: 2em;
+    padding: 2px;
+    line-height: 2em;
+    background-color: var(--mcolor);
+    text-align: center;
+    border: 2px dashed var(--mcontrast);
+
+    content: '🚫 (Click me!) Select an image';
+}
+
+input[type="file"] {
+    display: none;
+    cursor: pointer;
+}
+
+h1 {
+    border-bottom: 2px solid var(--mcontrast);
+}
+
+h1::before {
+    content: '📷 ';
+}
+
+h2::before {
+    content: '# ';
+}
+
+label {
+    border: 2px solid var(--mcontrast);
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.btn {
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+    border: 0px;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
+    font-family: 'Noto Sans Mono';
+
+    transition: 200ms;
+}
+
+.btn:hover {
+    transform: scaleX(1.05);
+}
+
+.dwnld {
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+    border: 0px;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 5px;
+    font-family: 'Noto Sans Mono';
+    text-decoration: none;
+
+    transition: 200ms;
+}
+
+.dwnld:hover {
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+    border: 2px solid var(--mcontrast);
+}
+
+.kernel {
+    border-collapse: collapse;
+}
+
+.kernel td {
+    border: 2px solid var(--mcontrast);
+}
+
+.kernel td input {
+    width: calc(90vw / 3);
+    height: 50px;
+    border: 0px;
+    line-height: 50px;
+    font-size: 2em;
+    text-align: center;
+    outline: none;
+
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+
+    transition: 200ms;
+}
+
+.kernel td input:hover {
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+}
+
+.downloadWrapper {
+    margin-bottom: 5em;
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    line-height: 2em;
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+    text-align: center;
+}
+
+footer a {
+    color: rgb(255, 23, 96);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer a::before {
+    content: '🔗';
+}
+
+.viewMode {
+    bottom: 1.5em;
+}
