@@ -1,0 +1,188 @@
+body {
+    margin: 0px;
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+    font-family: 'Noto Sans Mono';
+
+    transition: 500ms;
+}
+
+canvas {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    border-bottom: 2px solid var(--mcontrast);
+    margin: 0px 10px 0px 10px;
+}
+
+h1::before {
+    content: '🐦 ';
+}
+
+.scrl_down {
+    height: 6vh;
+    line-height: 3vh;
+    text-align: center;
+    font-size: 1em;
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+}
+
+.arrow_down {
+    font-family: 'Material Symbols Rounded';
+    font-size: 1.5em;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 0px 10px 70px 10px;
+}
+
+.biasControls,
+.simControls {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+}
+
+.biasControls {
+    border-right: 1px solid var(--mcontrast);
+}
+
+.simControls {
+    border-left: 1px solid var(--mcontrast);
+}
+
+.biasControls label {
+    display: flex;
+    flex-direction: row;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 5px;
+    height: 5px;
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+    outline: none;
+    border: 1px solid var(--mcontrast);
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+input[type="range"]:hover {
+    border-radius: 0px;
+    height: 6px;
+    background-color: rgb(0, 166, 255);
+}
+
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 15px;
+    background-color: rgb(234, 0, 255);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    border: 3px solid black;
+    border-radius: 100%;
+    background-color: rgb(26, 255, 171);
+}
+
+.slider::-moz-range-thumb {
+    /* appearance: none; */
+    width: 10px;
+    height: 15px;
+    background-color: rgb(234, 0, 255);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.slider::-moz-range-thumb:hover {
+    width: 15px;
+    border: 3px solid black;
+    border-radius: 100%;
+    background-color: rgb(26, 255, 171);
+}
+
+
+input[type="number"] {
+    width: 5em;
+    font-family: 'Noto Sans Mono';
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+    outline: none;
+    border: 1px solid var(--mcontrast);
+    border-radius: 5px;
+}
+
+input[type="checkbox"]:hover {
+    transition: 200ms;
+}
+
+input[type="checkbox"]:hover {
+    transform: scale(1.5);
+}
+
+.btn {
+    width: 10em;
+    align-self: center;
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+    border: 1px solid var(--mcontrast);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+    font-family: 'Noto Sans Mono';
+
+    transition: 200ms;
+}
+
+.btn:hover {
+    transform: scaleX(1.1);
+    background-color: rgb(255, 225, 0);
+    color: rgb(255, 23, 123);
+}
+
+footer {
+    line-height: 2em;
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+    text-align: center;
+}
+
+footer a {
+    color: rgb(255, 23, 123);
+    text-decoration: none;
+}
+
+footer a::before {
+    content: '🔗';
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.viewMode {
+    bottom: 1.5em;
+}

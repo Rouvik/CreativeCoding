@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boids</title>
+    <!-- Font -->
+    <link rel="stylesheet" href="../common/Fonts/Noto Mono/NotoMono.css">
+    <link rel="stylesheet" href="../common/Fonts/material-symbols-rounded/material-symbols-rounded.css">
+
+    <!-- Theme -->
+    <link rel="stylesheet" href="../common/theme.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <canvas id="screen">Oops! Canvas is not available in your browser.</canvas>
+    <div class="scrl_down" onclick="window.scrollTo(0, document.body.scrollHeight)">Scroll down <br><span
+            class="arrow_down">&#xe313;</span></div>
+    <h1>Boids(Bird-oid objects) simulation:</h1>
+    <div class="controls">
+        <div class="biasControls">
+            <h2>Boid controls:</h2>
+            <label for="numBoids">Boid count: <input type="number" id="numBoids" value="100" oninput="Boid.boidCount = +this.value; restartBoids();"></label>
+            <label for="alignFact">Alignment: <input type="range" id="alignFact" min="0" max="1.5" step="0.01"
+                    value="0.5" oninput="this.nextElementSibling.value = Boid.alignFactor = +this.value;"><input
+                    type="number" oninput="this.previousElementSibling.value = this.value" value="0.5"></input></label>
+            <label for="cohesFact">Cohesion: <input type="range" id="cohesFact" min="0" max="1.5" step="0.01"
+                    value="0.5" oninput="this.nextElementSibling.value = Boid.cohesionFactor = +this.value;"><input
+                    type="number" oninput="this.previousElementSibling.value = this.value" value="0.5"></input></label>
+            <label for="sepFact">Seperation: <input type="range" id="sepFact" min="0" max="1.5" step="0.01" value="0.5"
+                    oninput="this.nextElementSibling.value = Boid.sepFactor = +this.value;"><input type="number"
+                    oninput="this.previousElementSibling.value = this.value" value="0.5"></input></label>
+            <label for="avoidMouse">Avoid Mouse: <input type="checkbox" id="avoidMouse"
+                    oninput="Boid.avoidMouse = this.checked" checked></label>
+            <label for="avoidDist">Seperation: <input type="range" id="avoidDist" min="0" max="200" step="1" value="100"
+                    oninput="this.nextElementSibling.value = Boid.avoidDist = +this.value;"><input type="number"
+                    oninput="this.previousElementSibling.value = this.value" value="100"></input></label>
+        </div>
+        <div class="simControls">
+            <h2>Simulation controls:</h2>
+            <label for="show_quad">Show quadtree: <input type="checkbox" id="show_quad"
+                    oninput="Global.showQuadtree = this.checked"></label>
+            <label for="show_fps">Show FPS: <input type="checkbox" id="show_fps"
+                    oninput="Global.showFPS = this.checked"></label>
+            <button onclick="restartBoids()" class="btn">Restart</button>
+        </div>
+    </div>
+    <footer>Created by <a href="mailto:majirouvik@gmail.com">Rouvik Maji</a> Github <a
+            href="https://github.com/Rouvik/CreativeCoding/tree/main">repo</a></footer>
+</body>
+<script src="./vec.js"></script>
+<script src="./quadtree.js"></script>
+<script src="./boid.js"></script>
+<script src="./index.js"></script>
+<script src="../common/theme.js"></script>
+
+</html>
