@@ -55,10 +55,11 @@
     </p>
     <p class="hint">(use a single █ for crisp block ascii images)</p>
     <p>
-        <button onclick="fileInput()" id="genBtn">Generate Again</button>
+        <button onclick="fileInput()" id="genBtn" class="btn">Generate Again</button>
     </p>
 
     <h2>Output:</h2>
+    <button onclick="copyOutput(this)" class="btn">Copy</button>
     <div class="preWrapper">
         <pre id="asciiOutput" placeholder="asciiOutput" readonly></pre>
     </div>

@@ -156,3 +156,11 @@ changedColor(colorPickerWrapper.children[0]);
 function changedAsciiMap(elem) {
     asciiChars = elem.value.split('');
 }
+
+function copyOutput(elem) {
+    navigator.clipboard.writeText(asciiOutput.innerText);
+    elem.innerText = "Copied!";
+    setTimeout(() => {
+        elem.innerText = "Copy";
+    }, 5000);
+}

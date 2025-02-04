@@ -27,10 +27,15 @@ h1::before {
     background-color: var(--mcolor);
     color: var(--mcolor);
     color: green;
-
+    
     font-family: 'Noto Sans Mono';
+
+    transition: 200ms;
 }
 
+.container .card:hover {
+    box-shadow: 5px 5px 10px var(--mcontrast);
+}
 .container .card h3 {
     border-bottom: 2px solid var(--mcontrast);
     margin: 0px 10px 0px 10px;
