@@ -1,8 +1,8 @@
 class SpaceElement {
-    constructor(pos = new vec2(0)) {
+    constructor(pos = new vec2(0), vel = new vec2(0), acc = new vec2(0)) {
         this.pos = pos;
-        this.vel = new vec2(0);
-        this.acc = new vec2(0);
+        this.vel = vel;
+        this.acc = acc;
     }
 
     update()

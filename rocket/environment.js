@@ -4,6 +4,9 @@ class Environment {
     static MAX_STAR_SIZE = 1.5;
     static MIN_STAR_SIZE = 0.5;
 
+    static ENABLE_STARGLOW = false;
+    static GLOW_MULTIPLIER = 1.5;
+
     static renderStars(relDisp = new vec2(0)) {
         Global.cxt.fillStyle = "rgb(255, 255, 255)";
         for (let i = 0; i < Environment.NUM_STARS - this.stars.length; i++) {
@@ -61,7 +64,18 @@ class Environment {
                 Environment.stars.splice(i, 1);
             }
         }
-
         Global.cxt.fill();
+
+        if (Environment.ENABLE_STARGLOW) {
+            Global.cxt.beginPath();
+            Global.cxt.filter = 'blur(5px)';
+            for (let i = 0; i < this.stars.length; i++) {
+                Global.cxt.moveTo(Environment.stars[i].x, Environment.stars[i].y);
+                Global.cxt.arc(Environment.stars[i].x, Environment.stars[i].y, Environment.stars[i].size * Environment.GLOW_MULTIPLIER, 0, Math.PI * 2);
+            }
+
+            Global.cxt.fill();
+            Global.cxt.filter = 'none';
+        }
     }
 }

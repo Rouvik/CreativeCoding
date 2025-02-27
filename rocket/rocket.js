@@ -41,18 +41,12 @@ class Rocket {
 
     setKeyBindings()
     {
-        window.addEventListener('keydown', (evt) => {
-            this.keyboard[evt.key] = true;            
-            
-            if (this.keyboard['Control'] && this.keyboard['p']) {
-                evt.preventDefault();
+        Global.keyEvent.on('keypress', (event) => {
+            if (Global.keys['Control'] && Global.keys['p']) {
+                event.preventDefault();
                 new PersistentText('Position reset', new vec2(10, Global.sc.height - 30), 100, 'rgb(0, 128, 0)', '20px Consolas, monospace');
                 this.posAdjs = this.pos;
             }
-        });
-
-        window.addEventListener('keyup', (evt) => {
-            this.keyboard[evt.key] = false;
         });
     }
 
