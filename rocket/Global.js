@@ -37,6 +37,9 @@ class Global {
     static keys = [];
     static keyEvent = new EventEmitter();
 
+    static randomX = new PseudoRandom(583818);
+    static randomY = new PseudoRandom(263588);
+
     static setScreen(sc) {
         if (!sc instanceof HTMLCanvasElement) {
             throw new Error("[GLOBAL ERROR] Bad canvas element: " + sc);
@@ -81,5 +84,15 @@ class Global {
         Global.cxt.font = '20px Consolas, monospace';
         Global.cxt.fillText(`FPS: ${~~(1000 / (t - Global._tprev))}`, 5, Global.sc.height - 10);
         Global._tprev = t;
+    }
+
+    static randWithinX(min, max)
+    {
+        return Global.randomX.rand() % (max - min) + min;
+    }
+
+    static randWithinY(min, max)
+    {
+        return Global.randomY.rand() % (max - min) + min;
     }
 }

@@ -1,8 +1,37 @@
 class SpaceElement {
-    constructor(pos = new vec2(0), vel = new vec2(0), acc = new vec2(0)) {
-        this.pos = pos;
+    static renderList = [];
+
+    constructor(pos = new vec2(0), vel = new vec2(0), acc = new vec2(0), effectRadius = 0, effectElements = []) {
+        this._pos = pos;
         this.vel = vel;
         this.acc = acc;
+
+        this.effectElements = effectElements;
+        this.effectRadius = effectRadius;
+
+        SpaceElement.renderList.push(this);
+    }
+
+    set pos(val)
+    {
+        const trans = val.sub(this._pos);
+        for (const elem of this.effectElements) {
+            elem.pos = elem.pos.add(trans);
+        }
+        this._pos = val;
+    }
+
+    get pos()
+    {
+        return this._pos;
+    }
+
+    translate(deltaPos)
+    {
+        for (const elem of this.effectElements) {
+            elem._pos = elem._pos.add(deltaPos);
+        }
+        this._pos = this._pos.add(deltaPos);
     }
 
     update()
