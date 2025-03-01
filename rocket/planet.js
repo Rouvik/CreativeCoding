@@ -35,7 +35,7 @@ class Planet extends SpaceElement {
             const dist = moon.pos.sub(this.pos).mag();
             const normVelDir = distVec.norm().rotate(Math.PI / 2 * (Global.randWithinX(-1, 1)) || 1);
             const rP = this.radius + moon.radius; // edge to edge distance
-            const initVel = Global.randWithinY(((Planet.G * this.mass / dist) * (2 * rP / (dist + rP))) ** 0.5, Math.floor((2 * Planet.G * this.mass / dist) ** 0.5));
+            const initVel = Global.randWithinY(((Planet.G * this.mass / dist) * (2 * rP / (dist + rP))) ** 0.5 + 0.01, Math.floor((2 * Planet.G * this.mass / dist) ** 0.5));
             moon.vel = normVelDir.mulScalar(initVel);
 
             // add the latest aphelion to make sure the moons dont overlap

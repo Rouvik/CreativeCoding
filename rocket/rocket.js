@@ -10,11 +10,14 @@ class Rocket {
     static OVERSPEED_RANGE = { range: 10, min: 5 };
     static OVERSPEED_BARRIER = Rocket.MAX_SPEED_SQ - 5;
 
+    static ROTATION_RATE = 0.08;
+
     constructor(pos = new vec2(0)) {
         this.pos = pos;
         this.posAdjs = new vec2(0);
         this.vel = new vec2(0);
         this._dir = new vec2(1, -1);
+        this.target_dir = new vec2(1, -1);
         this.acc = new vec2(0);
 
         this.isAccelerating = false;
@@ -56,6 +59,8 @@ class Rocket {
             this.vel = this.vel.norm().mulScalar(Rocket.MAX_SPEED);
         }
         this.pos = this.vel.add(this.pos);
+
+        this.dir = this._dir.add(this.target_dir.sub(this._dir).mulScalar(Rocket.ROTATION_RATE));
     }
 
     render() {
