@@ -34,10 +34,14 @@ class Global {
     static _tprev = 0;
     static FPS_COLOR = "rgb(0, 255, 0)";
 
+    static FONT_STYLE_NO_SIZE = "Consolas, monospace";
+    static FONT_STYLE_20px = `20px ${Global.FONT_STYLE_NO_SIZE}`;
+    static FONT_STYLE_30px = `30px ${Global.FONT_STYLE_NO_SIZE}`;
+
     static keys = [];
     static keyEvent = new EventEmitter();
 
-    static randomX = new PseudoRandom(583818);
+    static randomX = new PseudoRandom(583819);
     static randomY = new PseudoRandom(263588);
 
     static setScreen(sc) {

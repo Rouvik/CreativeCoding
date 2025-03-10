@@ -89,8 +89,9 @@ class Rocket {
         Global.cxt.lineTo(rckt_pos.x - norm.x, rckt_pos.y - norm.y);
         Global.cxt.fill();
 
+        Global.cxt.strokeStyle = Rocket.STAT_COLOR;
         Global.cxt.fillStyle = Rocket.STAT_COLOR;
-        Global.cxt.font = '20px Consolas, monospace';
+        Global.cxt.font = Global.FONT_STYLE_20px;
         Global.cxt.lineWidth = 2;
         Global.cxt.strokeRect(5, 2, 350, 65);
         Global.cxt.lineWidth = 1;

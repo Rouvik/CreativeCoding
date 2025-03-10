@@ -45,11 +45,13 @@ class Planet extends SpaceElement {
         }
     }
 
-    renderMoonInfo()
+    renderMoonInfo(rocketAdjustment, rocketPos)
     {
         Global.cxt.fillStyle = "rgb(255, 255, 255)";
         for (let i = 0; i < this.effectElements.length; i++) {
-            Global.cxt.fillText(`Moon ${i + 1}: ${this.effectElements[i].pos.x.toFixed(2)}, ${this.effectElements[i].pos.y.toFixed(2)}`, 10, 100 + 20 * i);
+            // const adjustedPos = this.effectElements[i].pos.sub(rocketAdjustment).add(rocketPos);
+            const adjustedPos = this.effectElements[i].pos.sub(this.pos)//.add(this.pos.sub(rocketAdjustment));
+            Global.cxt.fillText(`Moon ${i + 1}: ${adjustedPos.x.toFixed(2)}, ${adjustedPos.y.toFixed(2)}`, 10, 100 + 20 * i);
         }
     }
 

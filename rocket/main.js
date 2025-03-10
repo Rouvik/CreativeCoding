@@ -80,7 +80,7 @@ function animate(t) {
         element.render(rocket.pos);
     }
     
-    planet1.renderMoonInfo();
+    planet1.renderMoonInfo(rocket.posAdjs, rocket.pos);
 
     rocket.render();
     joy.renderJoystick();
