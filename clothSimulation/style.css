@@ -1,0 +1,106 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+
+    background-color: var(--mcolor);
+    color: var(--mcontrast);
+
+    font-family: 'Noto Sans Mono';
+
+    transition: 200ms;
+
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+}
+
+.container > * {
+    margin: 10px;
+}
+
+/* Complex selector, but could'nt figure an easier and lazier method than this */
+.container label input:not([type="checkbox"]) {
+    width: 3rem;
+    font-family: 'Noto Sans Mono';
+    background: transparent;
+    color: var(--mcontrast);
+    border: 1px solid var(--mcontrast);
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    
+    transition: 100ms;
+}
+
+.container label input[type="checkbox"] {
+    transition: 100ms;
+}
+
+.container label input[type="checkbox"]:hover {
+    scale: 1.5;
+}
+
+.container label input:hover {
+    background: var(--mcontrast);
+    color: var(--mcolor);
+    scale: 1.1;
+}
+
+.regenerateButton {
+    width: 50%;
+    background: var(--mcontrast);
+    color: var(--mcolor);
+    border: 0px;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    font-family: 'Noto Sans Mono';
+
+    align-self: center;
+
+    transition: 100ms;
+}
+
+.regenerateButton:hover {
+    background: var(--mcolor);
+    color: var(--mcontrast);
+    border: 1px solid var(--mcontrast);
+    width: 60%;
+}
+
+.scrlDown {
+    text-align: center;
+    font-family: 'Material Symbols Rounded';
+    
+    border-bottom: 1px solid var(--mcontrast);
+}
+
+footer {
+    line-height: 2em;
+    background-color: var(--mcontrast);
+    color: var(--mcolor);
+    text-align: center;
+}
+
+footer a {
+    color: rgb(255, 23, 123);
+    text-decoration: none;
+}
+
+footer a::before {
+    content: '🔗';
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.viewMode {
+    bottom: 40px;
+}

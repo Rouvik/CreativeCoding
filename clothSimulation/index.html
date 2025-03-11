@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulations</title>
+    <!-- Theme -->
+    <link rel="stylesheet" href="../common/theme.css">
+
+    <!-- Fonts -->
+    <link rel="stylesheet" href="../common/Fonts/material-symbols-rounded/material-symbols-rounded.css">
+    <link rel="stylesheet" href="../common/Fonts/Noto Mono/NotoMono.css">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <canvas id="screen">Oops! Canvas is not available in your browser</canvas><br>
+    <div class="scrlDown">Scroll Down<br>&#xe313;</div>
+    <div class="container">
+        <label for="numx">Number of points along horizontal: <input type="number" id="numx" value="38"></label>
+        <label for="numy">Number of points along vertical: <input type="number" id="numy" value="20"></label>
+        <label for="topConstraint">Enable the top points to be constrained at place: <input type="checkbox"
+                id="topConstraint" checked oninput="Cloth.CONSTRAIN_TOP = this.checked;"></label>
+        <label for="skipAfter">Number of points to skip for top constraint: <input type="number" id="skipAfter"
+                oninput="Cloth.CELL_SKIP = +this.value;" value="9"></label>
+        <label>Gravity :: x: <input type="number" oninput="Cloth.GRAVITY.x = +this.value;" value="0.0"> y: <input
+                type="number" oninput="Cloth.GRAVITY.y = +this.value;" value="0.1"></label>
+        <label for="circleRadius">Circle Radius: <input type="number" id="circleRadius"
+                oninput="Cloth.PARTICLE_RADIUS = +this.value;" value="5"></label>
+        <button onclick="regenerateCloth()" class="regenerateButton">Regenerate cloth</button>
+    </div>
+    <footer>Created by <a href="mailto:majirouvik@gmail.com">Rouvik Maji</a> Github <a
+            href="https://github.com/Rouvik/CreativeCoding/tree/main">repo</a></footer>
+</body>
+<script src="./Global.js"></script>
+<script src="./vec.js"></script>
+<script src="./cloth.js"></script>
+<script src="./main.js"></script>
+
+<script src="../common/theme.js"></script>
+
+</html>
