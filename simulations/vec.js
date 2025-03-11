@@ -125,6 +125,14 @@ class vec2 {
         return temp;
     }
 
+    divScalar(val) {
+        const temp = new vec2(this);
+        temp.x /= val;
+        temp.y /= val;
+
+        return temp;
+    }
+
     /**
      * Performs dot product of a vector to this and returns it
      * @param {vec2} v2 The components of the other vector to dot

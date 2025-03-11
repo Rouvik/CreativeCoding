@@ -11,12 +11,13 @@ resize();
 Global.setCanvas(sc);
 Global.setContext(cxt);
 
-const cloth = new Cloth(2, 1, new vec2(30, 30), new vec2(sc.width - 10, sc.height - 10));
+const cloth = new Cloth(13, 10, new vec2(30, 30), new vec2(sc.width - 10, sc.height - 10));
 
 function animate(t) {
-    cxt.clearRect(0, 0, sc.width, sc.height);    
+    cxt.clearRect(0, 0, sc.width, sc.height);
 
     cloth.update();
+
     cloth.render();
 
     requestAnimationFrame(animate);

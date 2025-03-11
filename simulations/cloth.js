@@ -1,6 +1,6 @@
 class Cloth {
-    static PARTICLE_RADIUS = 3;
-    static GRAVITY = new vec2(0, 0.0);
+    static PARTICLE_RADIUS = 5;
+    static GRAVITY = new vec2(0, 0.1);
     static CELL_GAP = 40;
     static K = 0.01;
 
@@ -88,15 +88,15 @@ class Cloth {
     }
 
     update() {
-        // for (let i = 0; i < this.xnum; i++) {
-        //     this.particles[0][i].pos.x = i * Cloth.CELL_GAP;
-        //     this.particles[0][i].pos.y = 0;
-        //     this.constrainAdjacent(i, 0);
-        // }
+        this.constrainDist();
 
-        for (let i = 0; i < this.ynum; i++) {
+        for (let i = 0; i < this.xnum; i+=3) {
+            this.particles[0][i].pos.x = i * Cloth.CELL_GAP;
+            this.particles[0][i].pos.y = 0;
+        }
+
+        for (let i = 1; i < this.ynum; i++) {
             for (let j = 0; j < this.xnum; j++) {
-                this.constrainAdjacent(j, i);
 
                 // verlet integration
                 const temp = new vec2(this.particles[i][j].pos);
@@ -110,52 +110,36 @@ class Cloth {
         }
     }
 
-    // constrainAdjacent(j, i) {
-    //     if (j > 0 && this.particles[i][j - 1].pos.sub(this.particles[i][j].pos).magSq() > Cloth.CELL_GAP * Cloth.CELL_GAP) {
-    //         this.particles[i][j - 1].pos = this.particles[i][j - 1].pos.sub(this.particles[i][j].pos).norm().mulScalar(Cloth.CELL_GAP).add(this.particles[i][j].pos);
-    //     }
-
-    //     if (j < this.xnum - 1 && this.particles[i][j + 1].pos.sub(this.particles[i][j].pos).magSq() > Cloth.CELL_GAP * Cloth.CELL_GAP) {
-    //         this.particles[i][j + 1].pos = this.particles[i][j + 1].pos.sub(this.particles[i][j].pos).norm().mulScalar(Cloth.CELL_GAP).add(this.particles[i][j].pos);
-    //     }
-
-    //     if (i > 0 && this.particles[i - 1][j].pos.sub(this.particles[i][j].pos).magSq() > Cloth.CELL_GAP * Cloth.CELL_GAP) {
-    //         this.particles[i - 1][j].pos = this.particles[i - 1][j].pos.sub(this.particles[i][j].pos).norm().mulScalar(Cloth.CELL_GAP).add(this.particles[i][j].pos);
-    //     }
-
-    //     if (i < this.ynum - 1 && this.particles[i + 1][j].pos.sub(this.particles[i][j].pos).magSq() > Cloth.CELL_GAP * Cloth.CELL_GAP) {
-    //         this.particles[i + 1][j].pos = this.particles[i + 1][j].pos.sub(this.particles[i][j].pos).norm().mulScalar(Cloth.CELL_GAP).add(this.particles[i][j].pos);
-    //     }
-    // }
-
-    constrainAdjacent(j, i)
+    constrainDist()
     {
-        if (j > 0) {
-            const dist = this.particles[i][j - 1].pos.sub(this.particles[i][j].pos);
-            const diff = Cloth.CELL_GAP - dist.mag();
-            this.particles[i][j - 1].acc = this.particles[i][j - 1].acc.add(dist.norm().mulScalar(-Cloth.K * diff));
-            // this.particles[i][j].acc = this.particles[i][j].acc.add(dist.norm().mulScalar(-Cloth.K * diff));
+        for (let i = 0; i < this.ynum; i++) {
+            for (let j = 0; j < this.xnum - 1; j++) {
+                const mid = this.particles[i][j].pos.add(this.particles[i][j + 1].pos).divScalar(2);
+                const dir1 = this.particles[i][j].pos.sub(mid);
+                const dir2 = this.particles[i][j + 1].pos.sub(mid);
+                if (dir1.magSq() > (Cloth.CELL_GAP / 2) ** 2) {
+                    this.particles[i][j].pos = dir1.norm().mulScalar(Cloth.CELL_GAP / 2).add(mid);
+                }
+
+                if (dir2.magSq() > (Cloth.CELL_GAP / 2) ** 2) {
+                    this.particles[i][j + 1].pos = dir2.norm().mulScalar(Cloth.CELL_GAP / 2).add(mid);
+                }
+            }
         }
 
-        if (j < this.xnum - 1) {
-            const dist = this.particles[i][j + 1].pos.sub(this.particles[i][j].pos);
-            const diff = Cloth.CELL_GAP - dist.mag();
-            this.particles[i][j + 1].acc = this.particles[i][j + 1].acc.add(dist.norm().mulScalar(-Cloth.K * diff));
-            // this.particles[i][j].acc = this.particles[i][j].acc.add(dist.norm().mulScalar(-Cloth.K * diff));
-        }
+        for (let i = 0; i < this.ynum - 1; i++) {
+            for (let j = 0; j < this.xnum; j++) {
+                const mid = this.particles[i][j].pos.add(this.particles[i + 1][j].pos).divScalar(2);
+                const dir1 = this.particles[i][j].pos.sub(mid);
+                const dir2 = this.particles[i + 1][j].pos.sub(mid);
+                if (dir1.magSq() > (Cloth.CELL_GAP / 2) ** 2) {
+                    this.particles[i][j].pos = dir1.norm().mulScalar(Cloth.CELL_GAP / 2).add(mid);
+                }
 
-        if (i > 0) {
-            const dist = this.particles[i - 1][j].pos.sub(this.particles[i][j].pos);
-            const diff = Cloth.CELL_GAP - dist.mag();
-            this.particles[i - 1][j].acc = this.particles[i - 1][j].acc.add(dist.norm().mulScalar(Cloth.K * diff));
-            this.particles[i][j].acc = this.particles[i][j].acc.add(dist.norm().mulScalar(-Cloth.K * diff));
-        }
-
-        if (i < this.ynum - 1) {
-            const dist = this.particles[i + 1][j].pos.sub(this.particles[i][j].pos);
-            const diff = Cloth.CELL_GAP - dist.mag();
-            this.particles[i + 1][j].acc = this.particles[i + 1][j].acc.add(dist.norm().mulScalar(Cloth.K * diff));
-            this.particles[i][j].acc = this.particles[i][j].acc.add(dist.norm().mulScalar(-Cloth.K * diff));
+                if (dir2.magSq() > (Cloth.CELL_GAP / 2) ** 2) {
+                    this.particles[i + 1][j].pos = dir2.norm().mulScalar(Cloth.CELL_GAP / 2).add(mid);
+                }
+            }
         }
     }
 }
