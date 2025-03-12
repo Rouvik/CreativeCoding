@@ -6,6 +6,8 @@ class Cloth {
     static _CELL_SKIP = 9;
     static CONSTRAIN_TOP = true;
 
+    static ACCELEROMETER = null;
+
     constructor(xnum, ynum, boundStart, boundEnd) {
         this.xnum = xnum;
         this.ynum = ynum;
@@ -23,7 +25,7 @@ class Cloth {
 
         // the array of particles being animated
         this.particles = Array.from(Array(this.ynum), () => new Array(this.xnum));
-        this.setPointAccelerations();
+        this.setPointSystems();
 
         // setup mouse events
         this.mouseEvents();
@@ -37,14 +39,31 @@ class Cloth {
         return Cloth._CELL_SKIP;
     }
 
+    static setAccelerometerGravity() {
+        if (window.DeviceOrientationEvent == undefined) {
+            alert('DeviceOrientation is unsupported in your browser...');
+            return;
+        }
+
+        window.addEventListener('deviceorientation', Cloth.accerometerGravityHandler);
+    }
+
+    static removeAccelerometerGravity() {
+        window.removeEventListener('deviceorientation', Cloth.accerometerGravityHandler);
+    }
+
+    static accerometerGravityHandler(e) {
+        Cloth.GRAVITY.x = Math.sin(e.gamma * Math.PI / 180) * 0.1;
+        Cloth.GRAVITY.y = Math.sin(e.beta * Math.PI / 180) * 0.1;
+    }
+
     // set the indivitual point accelerations (and positions) for initiating the system
-    setPointAccelerations() {
+    setPointSystems() {
         for (let i = 0; i < this.ynum; i++) {
             for (let j = 0; j < this.xnum; j++) {
                 this.particles[i][j] = {
                     pos: new vec2(0),
-                    ppos: new vec2(0),
-                    acc: new vec2(Cloth.GRAVITY)
+                    ppos: new vec2(0)
                 };
                 this.particles[i][j].pos = new vec2(j * Cloth.CELL_GAP, i * Cloth.CELL_GAP);
                 this.particles[i][j].ppos = new vec2(this.particles[i][j].pos);
@@ -54,28 +73,54 @@ class Cloth {
 
     // sets the mouse events for the cloth vertex handling
     mouseEvents() {
-        Global.sc.addEventListener('mousedown', (e) => {
-            const mpos = new vec2(e.clientX, e.clientY).sub(this.translation);
+        if (Global.isPhone()) {
+            Global.sc.addEventListener('touchstart', (e) => {
+                const mpos = new vec2(e.touches[0].clientX, e.touches[0].clientY).sub(this.translation);
 
-            for (let i = 0; i < this.ynum; i++) {
-                for (let j = 0; j < this.xnum; j++) {
-                    if (this.particles[i][j].pos.sub(mpos).magSq(mpos) <= Cloth.PARTICLE_RADIUS * Cloth.PARTICLE_RADIUS * 1.5) {
-                        this.holdParticle = this.particles[i][j];
+                for (let i = 0; i < this.ynum; i++) {
+                    for (let j = 0; j < this.xnum; j++) {
+                        if (this.particles[i][j].pos.sub(mpos).magSq(mpos) <= Cloth.PARTICLE_RADIUS * Cloth.PARTICLE_RADIUS * 1.5) {
+                            this.holdParticle = this.particles[i][j];
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        Global.sc.addEventListener('mousemove', (e) => {
-            if (this.holdParticle) {
-                this.holdParticle.pos.x = e.clientX - this.translation.x;
-                this.holdParticle.pos.y = e.clientY - this.translation.y;
-            }
-        });
+            Global.sc.addEventListener('touchmove', (e) => {
+                if (this.holdParticle) {
+                    this.holdParticle.pos.x = e.touches[0].clientX - this.translation.x;
+                    this.holdParticle.pos.y = e.touches[0].clientY - this.translation.y;
+                }
+            });
 
-        Global.sc.addEventListener('mouseup', () => {
-            this.holdParticle = null;
-        });
+            Global.sc.addEventListener('touchend', () => {
+                this.holdParticle = null;
+            });
+        }
+        else {
+            Global.sc.addEventListener('mousedown', (e) => {
+                const mpos = new vec2(e.clientX, e.clientY).sub(this.translation);
+
+                for (let i = 0; i < this.ynum; i++) {
+                    for (let j = 0; j < this.xnum; j++) {
+                        if (this.particles[i][j].pos.sub(mpos).magSq(mpos) <= Cloth.PARTICLE_RADIUS * Cloth.PARTICLE_RADIUS * 1.5) {
+                            this.holdParticle = this.particles[i][j];
+                        }
+                    }
+                }
+            });
+
+            Global.sc.addEventListener('mousemove', (e) => {
+                if (this.holdParticle) {
+                    this.holdParticle.pos.x = e.clientX - this.translation.x;
+                    this.holdParticle.pos.y = e.clientY - this.translation.y;
+                }
+            });
+
+            Global.sc.addEventListener('mouseup', () => {
+                this.holdParticle = null;
+            });
+        }
     }
 
     // renders the cloth
@@ -134,7 +179,7 @@ class Cloth {
             for (let j = 0; j < this.xnum; j++) {
                 // verlet integration
                 const temp = new vec2(this.particles[i][j].pos);
-                this.particles[i][j].pos = this.particles[i][j].pos.mulScalar(2).sub(this.particles[i][j].ppos).add(this.particles[i][j].acc);
+                this.particles[i][j].pos = this.particles[i][j].pos.mulScalar(2).sub(this.particles[i][j].ppos).add(Cloth.GRAVITY);
                 this.particles[i][j].ppos = temp;
 
                 // collision with walls

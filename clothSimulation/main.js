@@ -15,18 +15,30 @@ resize();
 Global.setCanvas(sc);
 Global.setContext(cxt);
 
+if (Global.isPhone()) {
+    document.querySelector('.acclGravity').style.display = 'inline';
+}
+
+function acclSetter(elem) {
+    if (elem.checked) {
+        Cloth.setAccelerometerGravity();
+    }
+    else {
+        Cloth.removeAccelerometerGravity();
+    }
+}
+
 let cloth = null;
+cxt.font = '20px Consolas';
 
 function regenerateCloth() {
     cloth = new Cloth(+xnumElem.value, +ynumElem.value, new vec2(30, 30), new vec2(sc.width - 30, sc.height - 30));
 }
 
-
 regenerateCloth();
 
-let tprev = 0;
 
-cxt.font = '20px Consolas';
+let tprev = 0;
 
 function animate(t) {
     cxt.clearRect(0, 0, sc.width, sc.height);

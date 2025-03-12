@@ -30,6 +30,7 @@
                 type="number" oninput="Cloth.GRAVITY.y = +this.value;" value="0.1"></label>
         <label for="circleRadius">Circle Radius: <input type="number" id="circleRadius"
                 oninput="Cloth.PARTICLE_RADIUS = +this.value;" value="5"></label>
+        <label for="acclGravity" class="acclGravity">Enable accelerometer gravity: <input type="checkbox" id="acclGravity" oninput="acclSetter(this)"></label>
         <button onclick="regenerateCloth()" class="regenerateButton">Regenerate cloth</button>
     </div>
     <footer>Created by <a href="mailto:majirouvik@gmail.com">Rouvik Maji</a> Github <a

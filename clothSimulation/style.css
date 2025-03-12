@@ -104,3 +104,6 @@ footer a:hover {
 .viewMode {
     bottom: 40px;
 }
+.acclGravity {
+    display: none;
+}
